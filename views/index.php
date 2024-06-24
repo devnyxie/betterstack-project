@@ -64,6 +64,7 @@
 </form>
 
 <script>
+
 	const errorMessage = (errorMessageText) =>{
 		//del previous error message
 		$('#formError').remove();
@@ -71,37 +72,36 @@
 		//add error message to the top of the form
 		$('#addUserForm').prepend('<div id="formError" class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + errorMessage  + '</div>');
 	}
-	const validateEmail = (email) => {
-		const re = /\S+@\S+\.\S+/;
-		return re.test(email);
-	}
+
+	// Client Side Validation: User Experience and minimal server requests
 	const validateInputs = () => {
-		let error = false;
+		const validateEmail = (email) => {
+			const re = /\S+@\S+\.\S+/;
+			return re.test(email);
+		}
 		let errorMessageText = [];
-		// Client Side Validation: User Experience
-		// 1. name, city should be at least 3 chars long
-		if($('#name').val().length < 3) {
+
+		// func to check if a string contains only digits (aka phone number validation)
+		const containsOnlyDigits = (str) => /^\d+$/.test(str);
+
+		const name = $('#name').val().trim();
+		if (name.length < 3) {
 			errorMessageText.push('Name should be at least 3 characters long.');
-
-			error = true;
 		}
-		if($('#city').val().length < 3) {
-			errorMessageText.push('City should be at least 3 characters long.');
-			error = true;
-		}
-		// 2. email should be valid
-		if(!validateEmail($('#email').val())) {
+		const email = $('#email').val().trim();
+		if (!validateEmail(email)) {
 			errorMessageText.push('Invalid email address.');
-			error = true;
 		}
-		// 3. phone_number should be valid (min 3 chars)
-		if($('#phone_number').val().length < 3) {
-			errorMessageText.push('Invalid phone number.');
-			error = true;
+		const phone_number = $('#phone_number').val().trim();
+		if (phone_number.length < 3 || !containsOnlyDigits(phone_number)) {
+			errorMessageText.push('Invalid phone number, only numbers are allowed.');
 		}
-		return [error, errorMessageText];
+		const city = $('#city').val().trim();
+		if (city.length < 3) {
+			errorMessageText.push('City should be at least 3 characters long.');
+		}
+		return errorMessageText;
 	}
-
 
 	$(document).ready(function() {
 		//onclick of add user button, show the form
@@ -111,8 +111,8 @@
 		$('#addUserForm').on('submit', function(event) {
 			event.preventDefault();
 			
-			const [error, errorMessageText] = validateInputs();
-			if(error){
+			const errorMessageText = validateInputs();
+			if(errorMessageText.length > 0){
 				errorMessage(errorMessageText);
 				return;
 			}
@@ -122,15 +122,17 @@
 				url: 'create.php',
 				data: $(this).serialize(),
 				success: function(response) {
-					// Parse JSON res
 					var responseObj = JSON.parse(response);
-					// get user from response.user and append it to the table
+					if (!responseObj.success) {
+						errorMessage([responseObj.error]);
+						return;
+					}
 					const user = responseObj.user;
 					$('#usersTableBody').append('<tr><td>' + user.name + '</td><td>' + user.email + '</td><td>' + user.phone_number + '</td><td>' + user.city + '</td></tr>');
 				},
 				error: function(xhr, status, error) {
 					// Handle errors
-					alert('An error occurred: ' + error);
+					errorMessage(['An error occurred: ' + error])
 				}
 			});
 		});

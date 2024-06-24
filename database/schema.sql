@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `email` text NOT NULL,
-  `phone_number` text NOT NULL,
+  `phone_number` BIGINT NOT NULL,
   `city` text NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
