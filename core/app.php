@@ -1,8 +1,10 @@
 <?php
 
+require_once __DIR__ . '/path.php';
+
 // Load BaseModel and all models from models directory
-require dirname(__FILE__).'/base_model.php';
-foreach (glob(dirname(__FILE__).'/../models/*.php') as $filename){
+require __DIR__ . '/base_model.php';
+foreach (glob( __DIR__ . '/../models/*.php') as $filename) {
 	require $filename;
 }
 
@@ -17,14 +19,8 @@ class App {
 	public $config;
 	
 	public function __construct(){
-		// Save current directory path
-		$this->directory = dirname(__FILE__);
-		
-		// Load configuration options
-		$this->config = require $this->directory.'/config.php';
-			
-		// Load database instance and tell it to connect (using ENV variables)
-		$this->db = require $this->directory.'/database.php';
+		$this->directory = __DIR__;			
+		$this->db = require resolveCorePath('database');
 		$this->db->connect();
 	}	
 	
@@ -42,13 +38,19 @@ class App {
 		
 		// Start capturing of output
 		ob_start();
-		include './views/'.$viewfile.'.php';
+
+		// Resolve the full path to the view file
+		$viewFilePath = resolveViewPath($viewfile);
+
+		// Include the view file
+		include $viewFilePath;
+
 		// Assign output to $content which will be rendered in layout
-		$content = ob_get_contents();
-		// Stop output capturing
-		ob_end_clean();
+		$content = ob_get_clean();
+
 		// Render $content in layout
-		include './views/layout.php';
+		$layout = resolveViewPath('layout');
+		include $layout;
 	}
 	
 }

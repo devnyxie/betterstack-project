@@ -1,6 +1,6 @@
 <?php
 
-$app = require "./core/app.php";
+$app = require __DIR__ . "/core/app.php";
 
 $user = new User($app->db);
 

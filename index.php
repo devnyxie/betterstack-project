@@ -6,7 +6,7 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
 
 // Init app instance
-$app = require "./core/app.php";
+$app = require __DIR__ . "/core/app.php";
 
 // Get all users from DB, eager load all fields using '*'
 $users = User::find($app->db,'*');
