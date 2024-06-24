@@ -1,4 +1,4 @@
-<?php include './views/components/navbar.php' ?>
+<?php include __DIR__ . '/components/navbar.php'; ?>
 
 <div class="table-wrapper">
 	<table class="table table-bordered" id="usersTable">
