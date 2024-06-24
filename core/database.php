@@ -14,12 +14,14 @@ class Database {
 	 * Connects to database with given config
 	 */
 	public function connect(){
+		// Explanation:
+		// $_ENV works with .env files, getenv works with Deployment Platforms like Heroku and Railway.
 		$this->config = array(
-			'address' => $_ENV['DB_HOST'],
-			'username' => $_ENV['DB_USER'],
-			'password' => $_ENV['DB_PASS'],
-			'database' => $_ENV['DB_NAME']
-		);
+			'address' => $_ENV['DB_HOST'] ? $_ENV['DB_HOST'] : getenv('DB_HOST'),
+			'username' => $_ENV['DB_USER'] ? $_ENV['DB_USER'] : getenv('DB_USER'),
+			'password' => $_ENV['DB_PASS'] ? $_ENV['DB_PASS'] : getenv('DB_PASS'),
+			'database' => $_ENV['DB_NAME'] ? $_ENV['DB_NAME'] : getenv('DB_NAME')
+		);	
 		$this->mysqli = new mysqli($this->config['address'], $this->config['username'], $this->config['password'], $this->config['database']);
 		
 		if ($this->mysqli->connect_errno) {

@@ -2,9 +2,8 @@
 
 require 'vendor/autoload.php';
 use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__, '.env');
-$dotenv->load();
-$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS']);
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
 
 // Init app instance
 $app = require "./core/app.php";
