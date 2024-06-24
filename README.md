@@ -36,5 +36,6 @@ $ mysql -u root -p php_test_project < database/schema.sql
 Apart from all the tasks mentioned in the instructions, I have also:
 - Removed the short open tags from the code in views/index.php because they are not recommended according to the PHP documentation and require manual enabling in PHP 8.3.8.
 - Switched to using Environment Variables for security reasons and easier deployment, as you requested for production-ready code.
+- Previous import paths caused issues in the Docker container. I've updated them for a smoother experience.
 
 Thank you for the opportunity to work on this project. I hope you like it! 🚀
