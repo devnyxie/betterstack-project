@@ -1,0 +1,36 @@
+/*Table: highlight every other row*/
+.table tbody tr:nth-child(2n) {
+    background-color: #f2f2f2;
+}
+
+/*Components CSS*/
+.addUserBtn {
+    width: max-content;
+    display: flex;
+    gap: 5px;
+}
+
+/*Classes over inline CSS*/
+.d-flex {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+.justify-content-start {
+    justify-content: flex-start;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.mb-2 {
+    margin-bottom: 20px;
+}
