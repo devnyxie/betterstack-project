@@ -13,8 +13,13 @@ class Database {
 	/**
 	 * Connects to database with given config
 	 */
-	public function connect($config){
-		$this->config = $config;	
+	public function connect(){
+		$this->config = array(
+			'address' => $_ENV['DB_HOST'],
+			'username' => $_ENV['DB_USER'],
+			'password' => $_ENV['DB_PASS'],
+			'database' => $_ENV['DB_NAME']
+		);
 		$this->mysqli = new mysqli($this->config['address'], $this->config['username'], $this->config['password'], $this->config['database']);
 		
 		if ($this->mysqli->connect_errno) {

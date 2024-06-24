@@ -23,9 +23,9 @@ class App {
 		// Load configuration options
 		$this->config = require $this->directory.'/config.php';
 			
-		// Load database instance and tell it to connect with given config
+		// Load database instance and tell it to connect (using ENV variables)
 		$this->db = require $this->directory.'/database.php';
-		$this->db->connect($this->config->database);
+		$this->db->connect();
 	}	
 	
 	/**
