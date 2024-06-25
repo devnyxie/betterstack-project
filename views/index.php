@@ -1,7 +1,13 @@
 <?php include __DIR__ . '/components/navbar.php'; ?>
 
+
+<!-- Total amount of users -->
+<div class="d-flex justify-content-end">
+	<p id="totalUsers" ></p>
+</div>
+
 <div class="table-wrapper">
-	<table class="table table-bordered" id="usersTable">
+	<table class="table table-bordered usersTable">
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -10,13 +16,13 @@
 				<th>City</th>
 			</tr>
 		</thead>
-		<tbody id="usersTableBody" >
+		<tbody class="usersTableBody" >
 			<?php foreach($users as $user){?>
 				<tr>
 					<td><?=$user->getName()?></td>
 					<td><?=$user->getEmail()?></td>
 					<td><?=$user->getPhoneNumber()?></td>
-					<td><?=$user->getCity()?></td>
+					<td class="td-city"><?=$user->getCity()?></td>
 				</tr>
 			<?php }?>
 		</tbody>
@@ -24,44 +30,44 @@
 </div>
 
 <div class="d-flex justify-content-end mb-2">
-	<button type="button" class="btn btn-default addUserBtn"><div class="glyphicon glyphicon-plus"></div><div>Add User</div></button>
+	<a href="#addUserForm" class="text-decoration-none"><button type="button" class="btn btn-default addUserBtn"><div class="glyphicon glyphicon-plus"></div><div>Add User</div></button></a>
 </div>
 
 
-<form class="form-horizontal d-none" id="addUserForm" >
+<form class="form-horizontal well d-none" id="addUserForm" >
 	<div class="form-group">
-		<label class="col-lg-2 d-flex justify-content-start control-label" for="name">Name</label>
+		<label class="col-lg-12 d-flex justify-content-start control-label" for="name">Name</label>
 		<div class="col-lg-12">
-		<input class="form-control" name="name" input="text" id="name"/>
+		<input class="form-control" name="name" input="text" id="name" placeholder="Name"/>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label class="col-lg-2 d-flex justify-content-start control-label" for="email">E-mail</label>
+		<label class="col-lg-12 d-flex justify-content-start control-label" for="email">E-mail</label>
 		<div class="col-lg-12">
-		<input class="form-control" name="email" input="text" id="email"/>
+		<input class="form-control" name="email" input="text" id="email" placeholder="E-mail"/>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label class="col-lg-2 d-flex justify-content-start control-label" for="phone_number">Phone number</label>
+		<label class="col-lg-12 d-flex justify-content-start control-label" for="phone_number">Phone number</label>
 		<div class="col-lg-12">
-			<input class="form-control" name="phone_number" input="text" id="phone_number"/>
+			<input class="form-control" name="phone_number" input="text" id="phone_number" placeholder="Phone number"/>
 		</div>
 	</div>
 
 	<div class="form-group">
-		<label class="col-lg-2 d-flex justify-content-start control-label" for="city">City</label>
+		<label class="col-lg-12 d-flex justify-content-start control-label" for="city">City</label>
 		<div class="col-lg-12">
-			<input class="form-control" name="city" input="text" id="city"/>
+			<input class="form-control" name="city" input="text" id="city" placeholder="City"/>
 		</div>
 	</div>
-	<div class="form-group">
-		<div class="col-lg-12 d-flex justify-content-end">
-			<button class="btn btn-primary">Create new row</button>
-		</div>
+	<div class="col-lg-12 d-flex justify-content-end">
+		<button class="btn btn-primary">Create new row</button>
 	</div>
 </form>
+
+
 
 <script>
 
@@ -72,11 +78,9 @@
 		//add error message to the top of the form
 		$('#addUserForm').prepend('<div id="formError" class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + errorMessage  + '</div>');
 	}
-
 	const deleteErrorMessage = () => {
 		$('#formError').remove();
 	}
-
 	// Client Side Validation: User Experience and minimal server requests
 	const validateInputs = () => {
 		const validateEmail = (email) => {
@@ -107,39 +111,88 @@
 		return errorMessageText;
 	}
 
+	const createUser = (userData) => {
+		const errorMessageText = validateInputs();
+		if(errorMessageText.length > 0){
+			errorMessage(errorMessageText);
+			return;
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: 'create.php',
+			data: userData.serialize(),
+			success: function(response) {
+				var responseObj = JSON.parse(response);
+				if (!responseObj.success) {
+					errorMessage([responseObj.error]);
+					return;
+				}
+				deleteErrorMessage();
+				const user = responseObj.user;
+				$('.usersTableBody').append('<tr><td>' + user.name + '</td><td>' + user.email + '</td><td>' + user.phone_number + '</td><td>' + user.city + '</td></tr>');
+			},
+			error: function(xhr, status, error) {
+				// Handle errors
+				errorMessage(['An error occurred: ' + error])
+			}
+		});
+	}
+
+	// Display total users
+	function displayTotalUsers() {
+		//display NR of all visible rows
+		const totalUsers = $('.usersTableBody tr:visible').length;
+		$('#totalUsers').text('Results: ' + totalUsers);
+	}
+
 	$(document).ready(function() {
+		displayTotalUsers();
+		//onclick of any city, search for users from that city
+		$('.usersTableBody .td-city').click(function() {
+			const city = $(this).text();
+			$('#searchByCityValue').val(city);
+			$('#searchByCity').submit();
+		});
 		//onclick of add user button, show the form
 		$('.addUserBtn').on('click', function() {
 			$('#addUserForm').toggle();
 		});
 		$('#addUserForm').on('submit', function(event) {
 			event.preventDefault();
-			
-			const errorMessageText = validateInputs();
-			if(errorMessageText.length > 0){
-				errorMessage(errorMessageText);
-				return;
-			}
+			const userData = $(this);
+			createUser(userData);
+		});
+		//Navbar&Search related code
+		$('#searchByCity').submit(function(e) {
+			e.preventDefault();
+			const searchValue = $('#searchByCityValue').val().toLowerCase();
+			searchUsers(searchValue);
+		});
+		function searchUsers(searchValue) {
+			// hide all rows initially
+			$('.usersTableBody tr').hide();
 
-			$.ajax({
-				type: 'POST',
-				url: 'create.php',
-				data: $(this).serialize(),
-				success: function(response) {
-					var responseObj = JSON.parse(response);
-					if (!responseObj.success) {
-						errorMessage([responseObj.error]);
-						return;
-					}
-					deleteErrorMessage();
-					const user = responseObj.user;
-					$('#usersTableBody').append('<tr><td>' + user.name + '</td><td>' + user.email + '</td><td>' + user.phone_number + '</td><td>' + user.city + '</td></tr>');
-				},
-				error: function(xhr, status, error) {
-					// Handle errors
-					errorMessage(['An error occurred: ' + error])
+			// check if any rows contain the search value
+			let foundResults = false;
+			$('.usersTableBody tr').each(function() {
+				const city = $(this).find('td').eq(3).text().toLowerCase();
+				if (city.includes(searchValue)) {
+					$(this).show();
+					foundResults = true; // set flag if a match is found
 				}
 			});
-		});
+			displayTotalUsers();
+
+			// Create and display "Nothing found" message if no rows match
+			if (!foundResults) {
+				const noResultsDiv = $('<div id="noResults">Nothing found</div>');
+				$('.usersTableBody').append(noResultsDiv);
+			} else {
+				// remove "Nothing found" message if results are found
+				$('#noResults').remove();
+			}
+		}
 	});
+	
 </script>

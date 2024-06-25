@@ -1,7 +1,19 @@
+:root {
+    --border-radius: 4px;
+}
+
 /*Table: highlight every other row*/
 .table tbody tr:nth-child(2n) {
     background-color: #f2f2f2;
 }
+
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+
 
 /*Components CSS*/
 .addUserBtn {
@@ -10,7 +22,22 @@
     gap: 5px;
 }
 
+.usersTable {
+    border-radius: var(--border-radius) !important;
+    /* overflow: hidden; */
+}
+
+.usersTableBody .td-city:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
 /*Classes over inline CSS*/
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
 .d-flex {
     display: flex;
 }
@@ -33,4 +60,8 @@
 
 .mb-2 {
     margin-bottom: 20px;
+}
+
+.p-0 {
+    padding: 0 !important;
 }

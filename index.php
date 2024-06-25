@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable(getcwd());
 $dotenv->safeLoad();
 
 // Init app instance
