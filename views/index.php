@@ -73,6 +73,10 @@
 		$('#addUserForm').prepend('<div id="formError" class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + errorMessage  + '</div>');
 	}
 
+	const deleteErrorMessage = () => {
+		$('#formError').remove();
+	}
+
 	// Client Side Validation: User Experience and minimal server requests
 	const validateInputs = () => {
 		const validateEmail = (email) => {
@@ -94,7 +98,7 @@
 		}
 		const phone_number = $('#phone_number').val().trim();
 		if (phone_number.length < 3 || !containsOnlyDigits(phone_number)) {
-			errorMessageText.push('Invalid phone number, only numbers are allowed.');
+			errorMessageText.push('Invalid phone number, it should be at least 3 characters long and contain only digits.');
 		}
 		const city = $('#city').val().trim();
 		if (city.length < 3) {
@@ -127,6 +131,7 @@
 						errorMessage([responseObj.error]);
 						return;
 					}
+					deleteErrorMessage();
 					const user = responseObj.user;
 					$('#usersTableBody').append('<tr><td>' + user.name + '</td><td>' + user.email + '</td><td>' + user.phone_number + '</td><td>' + user.city + '</td></tr>');
 				},
