@@ -14,6 +14,7 @@ The project is hosted [here](https://php-app-714486958b28.herokuapp.com/) 👋
 - [Other Changes Made](#other-changes-made)
 - [Notes](#notes)
 - [Deployment Information](#deployment-information)
+- [Thank you](#thank-you)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
