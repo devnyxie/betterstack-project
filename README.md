@@ -2,8 +2,20 @@
 
 The project is hosted [here](https://php-app-714486958b28.herokuapp.com/) 👋
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Description](#description)
+- [Installation ⚙️](#installation-)
+  - [Database](#database)
+  - [Application](#application)
+- [Tasks to perform](#tasks-to-perform)
+- [Other Changes Made](#other-changes-made)
+- [Notes](#notes)
+- [Deployment Information](#deployment-information)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Description
 This is a very simple one-page application consisting of a single table and a form for creating new rows. To make it a little more complicated, we have written a 'framework' you have to use. Below is a set of simple tasks to perform. Please write a production-ready code.
