@@ -68,4 +68,7 @@ Apart from all the tasks mentioned in the instructions, I have also:
 ## Deployment Information
 The project is currently deployed on Heroku, with the MySQL database residing on Railway. Ideally, a unified hosting solution would have been preferred, with Railway being the primary choice. However, due to limitations in their PHP support, this was not possible.
 
-Thank you for the opportunity to work on this project. I hope you like it! <3
+
+## Thank you
+Thank you for the opportunity to work on this project. I really enjoyed working on it and I hope you it. If you have any questions or need any further information, please feel free to reach out to me. I'm looking forward to hearing from you soon! 😊
+
