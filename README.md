@@ -71,5 +71,5 @@ The project is currently deployed on Heroku, with the MySQL database residing on
 
 
 ## Thank you
-Thank you for the opportunity to work on this project. I really enjoyed working on it and I hope you it. If you have any questions or need any further information, please feel free to reach out to me. I'm looking forward to hearing from you soon! 😊
+Thank you for the opportunity to work on this project. I really enjoyed working on it and I hope you like it. If you have any questions or need any further information, please feel free to reach out to me. I'm looking forward to hearing from you soon! 😊
 
