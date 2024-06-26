@@ -10,10 +10,10 @@ function returnErrorResponse($message) {
 }
 
 // Retrieve and sanitize input data
-$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-$city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-$phone_number = filter_input(INPUT_POST, 'phone_number', FILTER_SANITIZE_STRING);
+$city = htmlspecialchars($_POST['city'], ENT_QUOTES, 'UTF-8');
+$phone_number = htmlspecialchars($_POST['phone_number'], ENT_QUOTES, 'UTF-8');
 
 // Server-side validation: Server & database security
 if (empty($name) || empty($email) || empty($city) || empty($phone_number)) {
@@ -29,9 +29,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 // Validate phone number
 if (strlen($phone_number) < 3) {
-    returnErrorResponse('Invalid phone number.');
+    returnErrorResponse('Invalid phone number. It should be at least 3 characters long.');
 }
-if (!preg_match('/^[0-9]/', $phone_number)) {
+if (!preg_match('/^[0-9]+$/', $phone_number)) {
     returnErrorResponse('Invalid phone number format. Only numbers are allowed.');
 }
 
