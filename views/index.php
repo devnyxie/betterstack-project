@@ -1,10 +1,7 @@
-<?php include __DIR__ . '/components/navbar.php'; ?>
-
 
 <!-- Total amount of users -->
-<div class="d-flex justify-content-end">
-	<p id="totalUsers" ></p>
-</div>
+<p class="help-block text-right" id="totalUsers"></p>
+
 
 <div class="table-wrapper">
 	<table class="table table-bordered usersTable">
@@ -38,14 +35,16 @@
 	<div class="form-group">
 		<label class="col-lg-12 d-flex justify-content-start control-label" for="name">Name</label>
 		<div class="col-lg-12">
-		<input class="form-control" name="name" input="text" id="name" placeholder="Name"/>
+			<input class="form-control" name="name" input="text" id="name" placeholder="Name"/>
+			<span class="help-block">Minimum of 3 characters</span>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="col-lg-12 d-flex justify-content-start control-label" for="email">E-mail</label>
 		<div class="col-lg-12">
-		<input class="form-control" name="email" input="text" id="email" placeholder="E-mail"/>
+			<input class="form-control" name="email" input="text" id="email" placeholder="E-mail"/>
+			<span class="help-block">Example: example@mail.com </span>
 		</div>
 	</div>
 
@@ -53,6 +52,7 @@
 		<label class="col-lg-12 d-flex justify-content-start control-label" for="phone_number">Phone number</label>
 		<div class="col-lg-12">
 			<input class="form-control" name="phone_number" input="text" id="phone_number" placeholder="Phone number"/>
+			<span class="help-block">Minimum of 3 digits</span>
 		</div>
 	</div>
 
@@ -60,14 +60,13 @@
 		<label class="col-lg-12 d-flex justify-content-start control-label" for="city">City</label>
 		<div class="col-lg-12">
 			<input class="form-control" name="city" input="text" id="city" placeholder="City"/>
+			<span class="help-block">Minimum of 3 characters</span>
 		</div>
 	</div>
 	<div class="col-lg-12 d-flex justify-content-end">
 		<button class="btn btn-primary">Create new row</button>
 	</div>
 </form>
-
-
 
 <script>
 

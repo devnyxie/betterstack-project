@@ -16,12 +16,12 @@
 
   </head>
   <body>
-
-  <div class="container p-0" >
-    
-    <?= $content ?>
-    
-  </div>  
-
+    <div class="container d-flex flex-column main p-0">
+    <?php include __DIR__ . '/components/navbar.php'; ?>
+      <div class="content">
+        <?= $content ?>
+      </div>  
+      <?php include __DIR__ . '/components/footer.php'; ?>
+    </div>  
   </body>
 </html>

@@ -12,6 +12,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -32,6 +36,34 @@ body {
     cursor: pointer;
 }
 
+.footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+}
+
+.content {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .help-block, .btn {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+.main {
+    height: 100vh;
+    width: 100%;
+}
+
+/* Bootstrap */
+.help-block {
+    margin-bottom: 0 !important;
+}
+
 
 /*Classes over inline CSS*/
 .text-decoration-none {
@@ -39,7 +71,11 @@ body {
 }
 
 .d-flex {
-    display: flex;
+    display: flex !important;
+}
+
+.flex-column {
+    flex-direction: column;
 }
 
 .d-none {
@@ -58,10 +94,22 @@ body {
     align-items: center;
 }
 
+.align-items-between {
+    align-items: space-between;
+}
+
 .mb-2 {
     margin-bottom: 20px;
 }
 
 .p-0 {
     padding: 0 !important;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.h-100 {
+    height: 100%;
 }
