@@ -3,7 +3,7 @@
 The project is hosted [here](https://php-app-714486958b28.herokuapp.com/) 👋
 
 > [!NOTE]
-> Now I see that you've suggested styling the Test Project using Tailwind, without a specific version, which means that there was a need to stick to legacy `Bootstrap 3.0.0`. If I'm right, please check out the [modern-ui](https://github.com/devnyxie/betterstack-project/tree/modern-ui?tab=readme-ov-file#preview) branch where I've utilized `Bootstrap 5.3.3` for styling. After all, since my task was to deliver **Production** code, I would have to discuss it with the team before making any changes to existing dependencies.
+> Now I see that you've suggested styling the Test Project using Tailwind, without a specific version, which means that there was a need to stick to legacy `Bootstrap 3.0.0`. If I'm right, please check out the [modern-ui](https://github.com/devnyxie/betterstack-project/tree/modern-ui?tab=readme-ov-file#preview) branch where I've utilized `Bootstrap 5.3.3` for styling.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
