@@ -1,4 +1,7 @@
 .settings
 .project
 vendor
+node_modules
 .env
+assets/css/compiled.css
+assets/css/compiled.css.map

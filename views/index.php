@@ -1,72 +1,73 @@
 
 <!-- Total amount of users -->
-<p class="help-block text-right" id="totalUsers"></p>
+<p class="text-secondary" style="text-align: right;" id="totalUsers"></p>
 
 
-<div class="table-wrapper">
-	<table class="table table-bordered usersTable">
-		<thead>
+
+<table class="table table-striped table-hover table-bordered usersTable">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>E-mail</th>
+			<th>Phone Number</th>
+			<th>City</th>
+		</tr>
+	</thead>
+	<tbody class="usersTableBody" >
+		<?php foreach($users as $user){?>
 			<tr>
-				<th>Name</th>
-				<th>E-mail</th>
-				<th>Phone Number</th>
-				<th>City</th>
+				<td><?=$user->getName()?></td>
+				<td><?=$user->getEmail()?></td>
+				<td><?=$user->getPhoneNumber()?></td>
+				<td class="td-city"><?=$user->getCity()?></td>
 			</tr>
-		</thead>
-		<tbody class="usersTableBody" >
-			<?php foreach($users as $user){?>
-				<tr>
-					<td><?=$user->getName()?></td>
-					<td><?=$user->getEmail()?></td>
-					<td><?=$user->getPhoneNumber()?></td>
-					<td class="td-city"><?=$user->getCity()?></td>
-				</tr>
-			<?php }?>
-		</tbody>
-	</table>	
-</div>
+		<?php }?>
+	</tbody>
+</table>	
+
 
 <div class="d-flex justify-content-end mb-2">
-	<a href="#addUserForm" class="text-decoration-none"><button type="button" class="btn btn-default addUserBtn"><div class="glyphicon glyphicon-plus"></div><div>Add User</div></button></a>
+	<a href="#addUserForm" class="text-decoration-none"><button type="button" class="btn btn-sm btn-outline-primary bg-opacity-10 addUserBtn d-flex gap-1"><div>Create new row</div></button></a>
 </div>
 
 
-<form class="form-horizontal well d-none" id="addUserForm" >
-	<div class="form-group">
-		<label class="col-lg-12 d-flex justify-content-start control-label" for="name">Name</label>
+<form class="form-horizontal border p-2 rounded" id="addUserForm" style="display: none;" >
+	<div class="input-group mb-2">
+		<label class="col-lg-12 d-flex justify-content-start form-label" for="name">Name</label>
 		<div class="col-lg-12">
 			<input class="form-control" name="name" input="text" id="name" placeholder="Name"/>
-			<span class="help-block">Minimum of 3 characters</span>
+			<small class="text-body-secondary">Minimum of 3 characters</small>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label class="col-lg-12 d-flex justify-content-start control-label" for="email">E-mail</label>
+	<div class="input-group mb-2">
+		<label class="col-lg-12 d-flex justify-content-start form-label" for="email">E-mail</label>
 		<div class="col-lg-12">
 			<input class="form-control" name="email" input="text" id="email" placeholder="E-mail"/>
-			<span class="help-block">Example: example@mail.com </span>
+			<small class="text-body-secondary">Example: example@mail.com </small>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label class="col-lg-12 d-flex justify-content-start control-label" for="phone_number">Phone number</label>
+	<div class="input-group mb-2">
+		<label class="col-lg-12 d-flex justify-content-start form-label" for="phone_number">Phone number</label>
 		<div class="col-lg-12">
 			<input class="form-control" name="phone_number" input="text" id="phone_number" placeholder="Phone number"/>
-			<span class="help-block">Minimum of 3 digits</span>
+			<small class="text-body-secondary">Minimum of 3 digits</small>
 		</div>
 	</div>
 
-	<div class="form-group">
-		<label class="col-lg-12 d-flex justify-content-start control-label" for="city">City</label>
+	<div class="input-group mb-2">
+		<label class="col-lg-12 d-flex justify-content-start form-label" for="city">City</label>
 		<div class="col-lg-12">
 			<input class="form-control" name="city" input="text" id="city" placeholder="City"/>
-			<span class="help-block">Minimum of 3 characters</span>
+			<small class="text-body-secondary">Minimum of 3 characters</small>
 		</div>
 	</div>
 	<div class="col-lg-12 d-flex justify-content-end">
-		<button class="btn btn-primary">Create new row</button>
+		<button class="btn btn-sm btn-outline-primary d-flex gap-1"><i class="bi bi-person-add"></i><div>Add User</div></button>
 	</div>
 </form>
+
 
 <script>
 
@@ -75,7 +76,7 @@
 		$('#formError').remove();
 		const errorMessage = errorMessageText.join('<br>');
 		//add error message to the top of the form
-		$('#addUserForm').prepend('<div id="formError" class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + errorMessage  + '</div>');
+		$('#addUserForm').prepend('<div id="formError" class="alert alert-danger alert-dismissable position-relative">' + '<p class="m-0 w-100">' + errorMessage + '</p>'  + '<button type="button" class="btn-close position-absolute" style="top: 5px; right: 5px;" data-bs-dismiss="alert" aria-label="Close"></button>' + '</div>');
 	}
 	const deleteErrorMessage = () => {
 		$('#formError').remove();
@@ -109,7 +110,6 @@
 		}
 		return errorMessageText;
 	}
-
 	const createUser = (userData) => {
 		const errorMessageText = validateInputs();
 		if(errorMessageText.length > 0){
@@ -137,7 +137,6 @@
 			}
 		});
 	}
-
 	// Display total users
 	function displayTotalUsers() {
 		//display NR of all visible rows

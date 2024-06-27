@@ -1,27 +1,24 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
+<nav class="navbar navbar-expand-lg mb-4 border-bottom">
+  <div class="container-fluid">
+    <a class="text-decoration-none" href="/"><h6 class="m-0 fw-bolder">Test Project</h6></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="/">Test Application</a>
-  </div>
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+      <div id="searchbar">
+      </div>
+    </div>
   </div>
 </nav>
 
 <script>
   // Add search form to the navbar if we are on the main page
   if(window.location.pathname === '/'){
-    $('.navbar-ex1-collapse').append(`
-    <form class="navbar-form navbar-left" role="search" id="searchByCity">
-      <div class="form-group search-container" >
-        <input type="text" class="form-control" placeholder="Search by city" id="searchByCityValue">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+    $('#searchbar').append(`
+    <form class="input-group" id="searchByCity" style="width: max-content;">
+      <input id="searchByCityValue" type="text" class="form-control form-control-sm" placeholder="Search by city">
     </form>
     `);
   }

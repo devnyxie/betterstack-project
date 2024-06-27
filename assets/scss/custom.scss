@@ -1,0 +1,34 @@
+@import "../../node_modules/bootstrap/scss/_mixins";
+
+// Bootstrap overrides
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 960px,
+  xxl: 960px
+);
+
+//primary color
+$primary:#7C87F7;
+
+//success color
+$success:#79cf88;
+
+//light
+$border-color: #E0E4EB;
+$body-color: #141414;
+$body-bg: #f8f9fa;
+
+//dark
+$border-color-dark: rgba(114, 125, 161, 0.15);
+$body-color-dark: #8992AC;
+$body-bg-dark: #0B0C14;
+
+//default bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
+//bs icons
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+//App CSS
+@import "../css/application.css";

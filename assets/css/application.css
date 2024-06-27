@@ -16,8 +16,8 @@ body {
     width: 100vw;
     display: flex;
     flex-direction: column;
+    font-size: 14px !important;
 }
-
 
 /*Components CSS*/
 .addUserBtn {
@@ -36,22 +36,8 @@ body {
     cursor: pointer;
 }
 
-.footer {
-    background-color: #f8f9fa;
-    padding: 10px 0;
-    text-align: center;
-    border-top: 1px solid #e9ecef;
-}
-
 .content {
     flex: 1;
-}
-
-@media (max-width: 768px) {
-    .help-block, .btn {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
 }
 
 .main {
@@ -60,56 +46,8 @@ body {
 }
 
 /* Bootstrap */
-.help-block {
-    margin-bottom: 0 !important;
-}
-
 
 /*Classes over inline CSS*/
 .text-decoration-none {
     text-decoration: none !important;
-}
-
-.d-flex {
-    display: flex !important;
-}
-
-.flex-column {
-    flex-direction: column;
-}
-
-.d-none {
-    display: none;
-}
-
-.justify-content-start {
-    justify-content: flex-start;
-}
-
-.justify-content-end {
-    justify-content: flex-end;
-}
-
-.align-items-center {
-    align-items: center;
-}
-
-.align-items-between {
-    align-items: space-between;
-}
-
-.mb-2 {
-    margin-bottom: 20px;
-}
-
-.p-0 {
-    padding: 0 !important;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.h-100 {
-    height: 100%;
 }

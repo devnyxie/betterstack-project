@@ -1,0 +1,25 @@
+{
+  "name": "betterstack-project",
+  "version": "1.0.0",
+  "description": "Test Project",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "sass assets/scss/custom.scss assets/css/compiled.css",
+    "dev": "npm run build-css && php -S localhost:8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devnyxie/betterstack-project.git"
+  },
+  "author": "devnyxie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devnyxie/betterstack-project/issues"
+  },
+  "homepage": "https://github.com/devnyxie/betterstack-project#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "sass": "^1.77.6"
+  }
+}
