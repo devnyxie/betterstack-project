@@ -37,9 +37,9 @@ $ mysql -u root -p php_test_project < database/schema.sql
 ```
 ### Application
 1. Clone the repository
-2. Run `composer install` to install dependencies.
+2. Run `composer install` and `npm install` to install dependencies.
 3. Database credentials: Copy `.env.example` to `.env` and update the database credentials.
-4. Run `php -S localhost:8000` to start the built-in Development Server.
+4. Run `npm run dev` to build CSS and start the built-in Development Server.
 
 ## Tasks to perform
 1. Style the page using [Bootstrap](http://getbootstrap.com/) or [Tailwind](http://tailwind.com/) 
