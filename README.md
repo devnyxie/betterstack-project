@@ -1,6 +1,11 @@
 # PHP Test Project
 
-The project is hosted [here](https://php-app-714486958b28.herokuapp.com/) 👋
+## Preview:
+### Dark Mode:
+![darkmode](https://github.com/devnyxie/betterstack-project/assets/84281349/bdc24816-df4c-46f5-96fc-e48d94381e92)
+### Light Mode:
+![lightmode](https://github.com/devnyxie/betterstack-project/assets/84281349/5cff06c8-a005-4e7d-bed8-fc8df3c9b2fa)
+
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
