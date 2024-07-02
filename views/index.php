@@ -27,43 +27,43 @@
 
 
 <div class="d-flex justify-content-end mb-2">
-	<a href="#addUserForm" class="text-decoration-none"><button type="button" class="btn btn-sm btn-outline-primary bg-opacity-10 addUserBtn d-flex gap-1"><div>Create new row</div></button></a>
+	<a href="#addUserForm" class="text-decoration-none"><button type="button" class="btn btn-sm btn-outline-primary bg-opacity-10 addUserBtn d-flex gap-1"><div>Create new user</div></button></a>
 </div>
 
 
 <form class="form-horizontal border p-2 rounded" id="addUserForm" style="display: none;" >
 	<div class="input-group mb-2">
-		<label class="col-lg-12 d-flex justify-content-start form-label" for="name">Name</label>
-		<div class="col-lg-12">
+		<label class="col-12 d-flex justify-content-start form-label" for="name">Name</label>
+		<div class="col-12">
 			<input class="form-control" name="name" input="text" id="name" placeholder="Name"/>
 			<small class="text-body-secondary">Minimum of 3 characters</small>
 		</div>
 	</div>
 
 	<div class="input-group mb-2">
-		<label class="col-lg-12 d-flex justify-content-start form-label" for="email">E-mail</label>
-		<div class="col-lg-12">
+		<label class="col-xs-12 d-flex justify-content-start form-label" for="email">E-mail</label>
+		<div class="col-12">
 			<input class="form-control" name="email" input="text" id="email" placeholder="E-mail"/>
 			<small class="text-body-secondary">Example: example@mail.com </small>
 		</div>
 	</div>
 
 	<div class="input-group mb-2">
-		<label class="col-lg-12 d-flex justify-content-start form-label" for="phone_number">Phone number</label>
-		<div class="col-lg-12">
+		<label class="col-12 d-flex justify-content-start form-label" for="phone_number">Phone number</label>
+		<div class="col-12">
 			<input class="form-control" name="phone_number" input="text" id="phone_number" placeholder="Phone number"/>
 			<small class="text-body-secondary">Minimum of 3 digits</small>
 		</div>
 	</div>
 
 	<div class="input-group mb-2">
-		<label class="col-lg-12 d-flex justify-content-start form-label" for="city">City</label>
-		<div class="col-lg-12">
+		<label class="col-12 d-flex justify-content-start form-label" for="city">City</label>
+		<div class="col-12">
 			<input class="form-control" name="city" input="text" id="city" placeholder="City"/>
 			<small class="text-body-secondary">Minimum of 3 characters</small>
 		</div>
 	</div>
-	<div class="col-lg-12 d-flex justify-content-end">
+	<div class="col-12 d-flex justify-content-end">
 		<button class="btn btn-sm btn-outline-primary d-flex gap-1"><i class="bi bi-person-add"></i><div>Add User</div></button>
 	</div>
 </form>
